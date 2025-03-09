@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>AngularJS with Node.js and PostgreSQL</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.0/angular-material.min.js"></script>
+  <link href="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.0/angular-material.min.css" rel="stylesheet" type="text/css">
+  <script src="app.js"></script>
+</head>
+<body>
+  <div ng-view></div>
+
+  <script type="text/ng-template" id="home">
+    <div ng-controller="HomeController as records">
+      <h1>Items</h1>
+      <table>
+        <th>Name</th>
+        <th>Description</th>
+        <tr ng-repeat="item in records.items">
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+        </tr>
+      </table>
+      <h2>Add New Item</h2>
+      <form ng-submit="records.createItem()">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput #first>
+        </mat-form-field>
+        <input type="text" ng-model="records.newItem.name" placeholder="Name" required>
+        <input type="text" ng-model="records.newItem.description" placeholder="Description" required>
+        <button type="submit">Add Item</button>
+      </form>
+    </div>
+  </script>
+</body>
+</html>
