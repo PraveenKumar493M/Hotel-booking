@@ -25,7 +25,7 @@ const CheckIn = () => {
         return;
       }
     }
-
+  
     setFamilyList([...familyList, ...members]);
     setMembers([{ name: "", aadhaar: "" }]);
     setNumFamilyMembers(1);
